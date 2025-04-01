@@ -1,20 +1,29 @@
-
 package com.example.quickcommerce.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import java.util.Date;
+import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Prediction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long predictionId;
-    private Long productId; // Consider making this a Product entity in real app
-    private Date predictionDate;
+
+    @Column(name = "product_id")
+    private Long productId;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    private Product product;
+
     private Integer predictedQuantity;
+
+    @Column(columnDefinition = "double precision")
+    private Double confidence;
+
+    private LocalDate forecastDate;
+
+    private LocalDate predictionDate;
 
     // Getters and Setters
     public Long getPredictionId() {
@@ -33,12 +42,12 @@ public class Prediction {
         this.productId = productId;
     }
 
-    public Date getPredictionDate() {
-        return predictionDate;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setPredictionDate(Date predictionDate) {
-        this.predictionDate = predictionDate;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Integer getPredictedQuantity() {
@@ -47,5 +56,29 @@ public class Prediction {
 
     public void setPredictedQuantity(Integer predictedQuantity) {
         this.predictedQuantity = predictedQuantity;
+    }
+
+    public Double getConfidence() {
+        return confidence;
+    }
+
+    public void setConfidence(Double confidence) {
+        this.confidence = confidence;
+    }
+
+    public LocalDate getForecastDate() {
+        return forecastDate;
+    }
+
+    public void setForecastDate(LocalDate forecastDate) {
+        this.forecastDate = forecastDate;
+    }
+
+    public LocalDate getPredictionDate() {
+        return predictionDate;
+    }
+
+    public void setPredictionDate(LocalDate predictionDate) {
+        this.predictionDate = predictionDate;
     }
 }

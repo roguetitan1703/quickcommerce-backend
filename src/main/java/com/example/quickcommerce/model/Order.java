@@ -1,22 +1,31 @@
-
 package com.example.quickcommerce.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import java.util.Date;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity(name = "Orders") // Renamed to avoid SQL keyword conflict
+@Entity
+@Table(name = "orders") // 'order' is a SQL keyword, so use 'orders'
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
-    private Long customerId; // Consider making this a User entity in real app
-    private Date orderDate;
-    private Long productId; // Consider making this a Product entity in real app
-    private Integer quantity;
-    private String orderStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    private LocalDateTime orderDate;
+
+    private String status; // e.g., "placed", "processing", "completed", "cancelled"
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems = new ArrayList<>();
+
+    // Total order amount
+    @Column(columnDefinition = "double precision")
+    private Double totalAmount;
 
     // Getters and Setters
     public Long getOrderId() {
@@ -27,43 +36,55 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public User getUser() {
+        return user;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Date getOrderDate() {
+    public LocalDateTime getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(LocalDateTime orderDate) {
         this.orderDate = orderDate;
     }
 
-    public Long getProductId() {
-        return productId;
+    public String getStatus() {
+        return status;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
-    public String getOrderStatus() {
-        return orderStatus;
+    // Helper method to add order item
+    public void addOrderItem(OrderItem item) {
+        orderItems.add(item);
+        item.setOrder(this);
     }
 
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
+    // Helper method to remove order item
+    public void removeOrderItem(OrderItem item) {
+        orderItems.remove(item);
+        item.setOrder(null);
+    }
+
+    public Double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(Double totalAmount) {
+        this.totalAmount = totalAmount;
     }
 }
