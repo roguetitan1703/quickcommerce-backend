@@ -11,7 +11,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/inventory")
-@CrossOrigin(origins = "*") // For development, restrict in production
 public class InventoryController {
 
     @Autowired

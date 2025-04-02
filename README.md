@@ -101,3 +101,39 @@ We provide multiple ways to access our API documentation:
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Database Configuration
+
+The application can be run with either:
+
+1. **H2 Database** (development/testing): In-memory database that doesn't require any setup
+2. **PostgreSQL** (production): Persistent relational database for production use
+
+### Setting up PostgreSQL
+
+For production use, the application is configured to use PostgreSQL.
+
+1. Install PostgreSQL from the [official website](https://www.postgresql.org/download/)
+2. Create a database for the application:
+   ```sql
+   CREATE DATABASE snapquickcommerce;
+   ```
+3. The default configuration uses:
+   - URL: `jdbc:postgresql://localhost:5432/snapquickcommerce`
+   - Username: `postgres`
+   - Password: `postgres`
+
+You can modify these settings in `application-prod.properties`.
+
+See the detailed [PostgreSQL Setup Guide](docs/DATABASE_SETUP.md) for more information.
+
+### Running with Different Database Profiles
+
+- Development mode (H2):
+  ```
+  ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
+  ```
+- Production mode (PostgreSQL):
+  ```
+  ./mvnw spring-boot:run -Dspring-boot.run.profiles=prod
+  ```

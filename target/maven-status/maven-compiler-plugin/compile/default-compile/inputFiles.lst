@@ -3,6 +3,7 @@ D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcom
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\AuthService.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\config\SwaggerConfig.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\repository\SalesRepository.java
+D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\config\RequestLoggingFilterConfig.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\repository\PredictionRepository.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\dto\CartItemDTO.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\model\OrderItem.java
@@ -10,7 +11,6 @@ D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcom
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\repository\ProductRepository.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\repository\UserRepository.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\CartService.java
-D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\config\SpringConfig.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\model\Sales.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\InventoryController.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\UserService.java
@@ -23,6 +23,7 @@ D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcom
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\ProductService.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\InventoryService.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\dto\ProductDTO.java
+D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\config\DataInitializer.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\AuthController.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\model\CartItem.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\ReportController.java
@@ -31,5 +32,6 @@ D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcom
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\model\Order.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\model\Prediction.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\PredictionService.java
+D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\DebugController.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\QuickCommerceApplication.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\config\WebConfig.java

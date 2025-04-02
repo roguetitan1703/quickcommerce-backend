@@ -2,6 +2,8 @@ package com.example.quickcommerce.service;
 
 import com.example.quickcommerce.model.User;
 import com.example.quickcommerce.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import java.util.Optional;
 
 @Service
 public class AuthService {
+    private static final Logger logger = LoggerFactory.getLogger(AuthService.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -18,19 +21,25 @@ public class AuthService {
      * In a real app, this would use proper password hashing
      */
     public User authenticate(String username, String password) {
+        logger.info("Authentication attempt for username: {}", username);
+
         Optional<User> userOpt = userRepository.findByUsername(username);
 
         if (userOpt.isEmpty()) {
+            logger.warn("Authentication failed: User not found with username: {}", username);
             throw new IllegalArgumentException("Invalid username or password");
         }
 
         User user = userOpt.get();
+        logger.debug("User found: {}, userId: {}", user.getUsername(), user.getUserId());
 
         // Very basic password check (in a real app, use proper password hashing!)
         if (!user.getPassword().equals(password)) {
+            logger.warn("Authentication failed: Invalid password for username: {}", username);
             throw new IllegalArgumentException("Invalid username or password");
         }
 
+        logger.info("Authentication successful for user: {}", username);
         return user;
     }
 

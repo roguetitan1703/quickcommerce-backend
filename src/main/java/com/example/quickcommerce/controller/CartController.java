@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/cart")
-@CrossOrigin(origins = "*") // For development, restrict in production
 public class CartController {
 
     @Autowired

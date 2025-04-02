@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/products")
-@CrossOrigin(origins = "*") // For development, restrict in production
+// Removing CrossOrigin as it's handled by WebConfig
 public class ProductController {
 
     @Autowired
