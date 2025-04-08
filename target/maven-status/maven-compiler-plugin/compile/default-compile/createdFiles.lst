@@ -24,6 +24,7 @@ com\example\quickcommerce\service\ReportService.class
 com\example\quickcommerce\repository\CartItemRepository.class
 com\example\quickcommerce\config\SwaggerConfig.class
 com\example\quickcommerce\controller\InventoryController.class
+com\example\quickcommerce\config\RequestLoggingFilterConfig.class
 com\example\quickcommerce\model\OrderItem.class
 com\example\quickcommerce\controller\OrderController.class
 com\example\quickcommerce\config\WebConfig.class
