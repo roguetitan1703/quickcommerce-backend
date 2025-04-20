@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\AuthService.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\repository\SalesRepository.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\config\RequestLoggingFilterConfig.java
@@ -51,3 +52,42 @@ D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcom
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\DebugController.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\config\CorsConfig.java
 D:\TY\sem6\maha-project\quickcommerce-backend\src\main\java\com\example\quickcommerce\config\WebConfig.java
+=======
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\config\RequestLoggingFilterConfig.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\model\Order.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\model\Product.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\model\CartItem.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\repository\OrderItemRepository.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\dto\CartItemDTO.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\model\OrderItem.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\ReportService.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\model\User.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\repository\UserRepository.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\InventoryService.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\DebugController.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\OrderController.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\PredictionService.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\ProductService.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\repository\ProductRepository.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\UserService.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\repository\SalesRepository.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\repository\OrderRepository.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\InventoryController.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\dto\ProductDTO.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\config\DataInitializer.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\CartController.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\ProductController.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\model\Sales.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\AuthService.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\CartService.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\AuthController.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\config\SwaggerConfig.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\repository\PredictionRepository.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\PredictionController.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\QuickCommerceApplication.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\service\OrderService.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\repository\CartItemRepository.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\model\Prediction.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\config\WebConfig.java
+D:\BDT\quickcommerce-monorepo\backend\quickcommerce-backend\src\main\java\com\example\quickcommerce\controller\ReportController.java
+>>>>>>> b970d9e39062f29fbbad6cb628c9620d6cbb4ef0

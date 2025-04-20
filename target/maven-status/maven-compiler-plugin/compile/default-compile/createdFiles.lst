@@ -40,7 +40,10 @@ com\example\quickcommerce\repository\CartItemRepository.class
 com\example\quickcommerce\recommendation\RecommendationResponse.class
 com\example\quickcommerce\config\SwaggerConfig.class
 com\example\quickcommerce\controller\InventoryController.class
+<<<<<<< HEAD
 com\example\quickcommerce\config\CorsConfig.class
+=======
+>>>>>>> b970d9e39062f29fbbad6cb628c9620d6cbb4ef0
 com\example\quickcommerce\config\RequestLoggingFilterConfig.class
 com\example\quickcommerce\model\OrderItem.class
 com\example\quickcommerce\controller\OrderController.class
