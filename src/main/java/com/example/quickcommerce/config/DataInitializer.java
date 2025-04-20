@@ -197,12 +197,11 @@ public class DataInitializer {
                 Product product = new Product();
                 product.setName(name);
                 product.setDescription(description);
-                product.setCategory(category);
                 product.setPrice(price);
-                product.setCurrentStock(stock);
+                product.setCategoryId(1L); // Assuming a default categoryId
                 product.setImageUrl(imageUrl);
                 product.setCreatedAt(timestamp);
-                product.setUpdatedAt(timestamp);
+                product.setIsActive(true);
                 return product;
         }
 }

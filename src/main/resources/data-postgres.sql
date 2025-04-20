@@ -104,69 +104,69 @@ VALUES
 SELECT SETVAL('products_id_seq', (SELECT MAX(id) FROM products));
 
 -- Insert inventory data
-INSERT INTO inventory (id, product_id, current_stock, min_stock_level, last_updated)
+INSERT INTO inventory (id, product_id, current_stock, min_stock, max_stock)
 VALUES 
 -- Dairy
-(1, 1, 50, 10, CURRENT_TIMESTAMP),  -- Milk
-(2, 2, 35, 8, CURRENT_TIMESTAMP),   -- Cottage Cheese
-(3, 3, 40, 10, CURRENT_TIMESTAMP),  -- Cheese
-(4, 4, 30, 8, CURRENT_TIMESTAMP),   -- Curd
-(5, 5, 45, 12, CURRENT_TIMESTAMP),  -- Butter
-(6, 6, 40, 10, CURRENT_TIMESTAMP),  -- Yogurt
-(7, 7, 30, 10, CURRENT_TIMESTAMP),  -- Almond Milk
+(1, 1, 50, 10, 1000),  -- Milk
+(2, 2, 35, 8, 1000),   -- Cottage Cheese
+(3, 3, 40, 10, 1000),  -- Cheese
+(4, 4, 30, 8, 1000),   -- Curd
+(5, 5, 45, 12, 1000),  -- Butter
+(6, 6, 40, 10, 1000),  -- Yogurt
+(7, 7, 30, 10, 1000),  -- Almond Milk
 
 -- Fruits & Vegetables
-(8, 8, 45, 15, CURRENT_TIMESTAMP),  -- Bananas
-(9, 9, 20, 5, CURRENT_TIMESTAMP),   -- Avocado
-(10, 10, 25, 8, CURRENT_TIMESTAMP), -- Spinach
-(11, 11, 40, 10, CURRENT_TIMESTAMP), -- Tomatoes
-(12, 12, 35, 10, CURRENT_TIMESTAMP), -- Carrots
-(13, 13, 30, 10, CURRENT_TIMESTAMP), -- Apples
+(8, 8, 45, 15, 1000),  -- Bananas
+(9, 9, 20, 5, 1000),   -- Avocado
+(10, 10, 25, 8, 1000), -- Spinach
+(11, 11, 40, 10, 1000), -- Tomatoes
+(12, 12, 35, 10, 1000), -- Carrots
+(13, 13, 30, 10, 1000), -- Apples
 
 -- Bakery
-(14, 14, 25, 8, CURRENT_TIMESTAMP),  -- Sourdough Bread
-(15, 15, 30, 10, CURRENT_TIMESTAMP), -- Whole Wheat Bread
-(16, 16, 20, 5, CURRENT_TIMESTAMP),  -- Croissants
-(17, 17, 25, 8, CURRENT_TIMESTAMP),  -- Muffins
+(14, 14, 25, 8, 1000),  -- Sourdough Bread
+(15, 15, 30, 10, 1000), -- Whole Wheat Bread
+(16, 16, 20, 5, 1000),  -- Croissants
+(17, 17, 25, 8, 1000),  -- Muffins
 
 -- Snacks
-(18, 18, 60, 20, CURRENT_TIMESTAMP), -- Potato Chips
-(19, 19, 45, 15, CURRENT_TIMESTAMP), -- Cookies
-(20, 20, 40, 12, CURRENT_TIMESTAMP), -- Biscuits
-(21, 21, 50, 15, CURRENT_TIMESTAMP), -- Candy
-(22, 22, 35, 10, CURRENT_TIMESTAMP), -- Popcorn
-(23, 23, 42, 15, CURRENT_TIMESTAMP), -- Granola Bars
+(18, 18, 60, 20, 1000), -- Potato Chips
+(19, 19, 45, 15, 1000), -- Cookies
+(20, 20, 40, 12, 1000), -- Biscuits
+(21, 21, 50, 15, 1000), -- Candy
+(22, 22, 35, 10, 1000), -- Popcorn
+(23, 23, 42, 15, 1000), -- Granola Bars
 
 -- Beverages
-(24, 24, 35, 10, CURRENT_TIMESTAMP), -- Orange Juice
-(25, 25, 60, 20, CURRENT_TIMESTAMP), -- Soda
-(26, 26, 40, 15, CURRENT_TIMESTAMP), -- Tea
-(27, 27, 30, 10, CURRENT_TIMESTAMP), -- Coffee
-(28, 28, 70, 25, CURRENT_TIMESTAMP), -- Water
-(29, 29, 45, 15, CURRENT_TIMESTAMP), -- Energy Drink
+(24, 24, 35, 10, 1000), -- Orange Juice
+(25, 25, 60, 20, 1000), -- Soda
+(26, 26, 40, 15, 1000), -- Tea
+(27, 27, 30, 10, 1000), -- Coffee
+(28, 28, 70, 25, 1000), -- Water
+(29, 29, 45, 15, 1000), -- Energy Drink
 
 -- Household
-(30, 30, 25, 8, CURRENT_TIMESTAMP),  -- Detergent
-(31, 31, 30, 10, CURRENT_TIMESTAMP), -- Dishwasher
-(32, 32, 40, 12, CURRENT_TIMESTAMP), -- Cleaning Cloth
-(33, 33, 15, 5, CURRENT_TIMESTAMP),  -- Mop
-(34, 34, 18, 6, CURRENT_TIMESTAMP),  -- Broom
-(35, 35, 55, 15, CURRENT_TIMESTAMP), -- Toilet Paper
+(30, 30, 25, 8, 1000),  -- Detergent
+(31, 31, 30, 10, 1000), -- Dishwasher
+(32, 32, 40, 12, 1000), -- Cleaning Cloth
+(33, 33, 15, 5, 1000),  -- Mop
+(34, 34, 18, 6, 1000),  -- Broom
+(35, 35, 55, 15, 1000), -- Toilet Paper
 
 -- Personal Care
-(36, 36, 35, 10, CURRENT_TIMESTAMP), -- Shampoo
-(37, 37, 30, 10, CURRENT_TIMESTAMP), -- Conditioner
-(38, 38, 40, 15, CURRENT_TIMESTAMP), -- Soap
-(39, 39, 45, 15, CURRENT_TIMESTAMP), -- Toothpaste
-(40, 40, 38, 12, CURRENT_TIMESTAMP), -- Deodorant
-(41, 41, 32, 10, CURRENT_TIMESTAMP), -- Body Lotion
+(36, 36, 35, 10, 1000), -- Shampoo
+(37, 37, 30, 10, 1000), -- Conditioner
+(38, 38, 40, 15, 1000), -- Soap
+(39, 39, 45, 15, 1000), -- Toothpaste
+(40, 40, 38, 12, 1000), -- Deodorant
+(41, 41, 32, 10, 1000), -- Body Lotion
 
 -- Frozen Foods
-(42, 42, 25, 8, CURRENT_TIMESTAMP),  -- Ice Cream
-(43, 43, 30, 10, CURRENT_TIMESTAMP), -- Frozen Vegetables
-(44, 44, 28, 10, CURRENT_TIMESTAMP), -- Frozen Pizza
-(45, 45, 32, 12, CURRENT_TIMESTAMP), -- Frozen Meals
-(46, 46, 20, 8, CURRENT_TIMESTAMP);  -- Frozen Fish
+(42, 42, 25, 8, 1000),  -- Ice Cream
+(43, 43, 30, 10, 1000), -- Frozen Vegetables
+(44, 44, 28, 10, 1000), -- Frozen Pizza
+(45, 45, 32, 12, 1000), -- Frozen Meals
+(46, 46, 20, 8, 1000);  -- Frozen Fish
 
 -- Reset sequence
 SELECT SETVAL('inventory_id_seq', (SELECT MAX(id) FROM inventory)); 

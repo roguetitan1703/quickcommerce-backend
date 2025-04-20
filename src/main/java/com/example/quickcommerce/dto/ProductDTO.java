@@ -9,13 +9,13 @@ import java.time.LocalDateTime;
 public class ProductDTO {
     private Long productId;
     private String name;
-    private String category;
+    private Long categoryId;
     private Double price;
-    private Integer currentStock;
+    private Integer discountPercent;
     private String description;
     private String imageUrl;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private Boolean isActive;
 
     // Default constructor
     public ProductDTO() {
@@ -25,13 +25,13 @@ public class ProductDTO {
     public ProductDTO(Product product) {
         this.productId = product.getProductId();
         this.name = product.getName();
-        this.category = product.getCategory();
+        this.categoryId = product.getCategoryId();
         this.price = product.getPrice();
-        this.currentStock = product.getCurrentStock();
+        this.discountPercent = product.getDiscountPercent();
         this.description = product.getDescription();
         this.imageUrl = product.getImageUrl();
         this.createdAt = product.getCreatedAt();
-        this.updatedAt = product.getUpdatedAt();
+        this.isActive = product.getIsActive();
     }
 
     // Getters and Setters
@@ -51,12 +51,12 @@ public class ProductDTO {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public Double getPrice() {
@@ -67,12 +67,12 @@ public class ProductDTO {
         this.price = price;
     }
 
-    public Integer getCurrentStock() {
-        return currentStock;
+    public Integer getDiscountPercent() {
+        return discountPercent;
     }
 
-    public void setCurrentStock(Integer currentStock) {
-        this.currentStock = currentStock;
+    public void setDiscountPercent(Integer discountPercent) {
+        this.discountPercent = discountPercent;
     }
 
     public String getDescription() {
@@ -99,12 +99,12 @@ public class ProductDTO {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
+    public Boolean getIsActive() {
+        return isActive;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 
     // Convert back to Product entity
@@ -112,13 +112,13 @@ public class ProductDTO {
         Product product = new Product();
         product.setProductId(this.productId);
         product.setName(this.name);
-        product.setCategory(this.category);
+        product.setCategoryId(this.categoryId);
         product.setPrice(this.price);
-        product.setCurrentStock(this.currentStock);
+        product.setDiscountPercent(this.discountPercent);
         product.setDescription(this.description);
         product.setImageUrl(this.imageUrl);
         product.setCreatedAt(this.createdAt);
-        product.setUpdatedAt(this.updatedAt);
+        product.setIsActive(this.isActive);
         return product;
     }
 }

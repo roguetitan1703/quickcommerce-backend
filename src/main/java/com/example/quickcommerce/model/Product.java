@@ -5,23 +5,45 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long productId;
+
+    @Column(name = "name", nullable = false)
     private String name;
-    private String category;
-    @Column(columnDefinition = "double precision")
-    private Double price;
-    private Integer currentStock;
-    @Column(length = 1000)
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "price", nullable = false)
+    private Double price;
+
+    @Column(name = "discount_percent")
+    private Integer discountPercent;
+
+    @Column(name = "category_id")
+    private Long categoryId;
+
+    @Column(name = "category")
+    private String category;
+
+    @Column(name = "image_url")
     private String imageUrl;
+
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+
+    @Column(name = "is_active")
+    private Boolean isActive;
 
     // Getters and Setters
     public Long getProductId() {
@@ -40,12 +62,12 @@ public class Product {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Double getPrice() {
@@ -56,20 +78,28 @@ public class Product {
         this.price = price;
     }
 
-    public Integer getCurrentStock() {
-        return currentStock;
+    public Integer getDiscountPercent() {
+        return discountPercent;
     }
 
-    public void setCurrentStock(Integer currentStock) {
-        this.currentStock = currentStock;
+    public void setDiscountPercent(Integer discountPercent) {
+        this.discountPercent = discountPercent;
     }
 
-    public String getDescription() {
-        return description;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getImageUrl() {
@@ -88,11 +118,11 @@ public class Product {
         this.createdAt = createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
+    public Boolean getIsActive() {
+        return isActive;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setIsActive(Boolean isActive) {
+        this.isActive = isActive;
     }
 }

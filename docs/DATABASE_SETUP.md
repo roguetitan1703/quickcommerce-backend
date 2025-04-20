@@ -88,7 +88,7 @@ The application is already configured to connect to a PostgreSQL database with t
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/snapquickcommerce
 spring.datasource.username=postgres
-spring.datasource.password=postgres
+spring.datasource.password=root
 spring.datasource.driver-class-name=org.postgresql.Driver
 spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 ```

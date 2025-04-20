@@ -2,8 +2,10 @@ package com.example.quickcommerce.service;
 
 import com.example.quickcommerce.model.Prediction;
 import com.example.quickcommerce.model.Product;
+import com.example.quickcommerce.model.Category;
 import com.example.quickcommerce.repository.PredictionRepository;
 import com.example.quickcommerce.repository.ProductRepository;
+import com.example.quickcommerce.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,9 @@ public class PredictionService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     /**
      * Get all demand predictions
@@ -79,5 +84,19 @@ public class PredictionService {
         return similarProducts.stream()
                 .map(Product::getProductId)
                 .collect(Collectors.toList());
+    }
+
+    public List<Product> getProductsByCategory(String categoryName) {
+        // First get the category ID from the name
+        Category category = categoryRepository.findByNameIgnoreCase(categoryName)
+                .orElseThrow(() -> new RuntimeException("Category not found: " + categoryName));
+
+        // Then get products by category ID
+        return productRepository.findByCategoryId(category.getId());
+    }
+
+    public List<Product> getRelatedProducts(Product product) {
+        // Get products from the same category
+        return productRepository.findByCategoryId(product.getCategoryId());
     }
 }

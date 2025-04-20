@@ -38,10 +38,11 @@ CREATE TABLE IF NOT EXISTS products (
 -- Inventory table
 CREATE TABLE IF NOT EXISTS inventory (
     id SERIAL PRIMARY KEY,
-    product_id INT UNIQUE REFERENCES products(id),
-    current_stock INT NOT NULL DEFAULT 0,
-    min_stock_level INT DEFAULT 5,
-    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    product_id BIGINT NOT NULL REFERENCES products(id),
+    current_stock INTEGER NOT NULL DEFAULT 0,
+    min_stock INTEGER DEFAULT 0,
+    max_stock INTEGER DEFAULT 1000,
+    UNIQUE(product_id)
 );
 
 -- Cart items table
@@ -114,4 +115,6 @@ CREATE INDEX IF NOT EXISTS idx_products_category ON products(category_id);
 CREATE INDEX IF NOT EXISTS idx_cart_items_user ON cart_items(user_id);
 CREATE INDEX IF NOT EXISTS idx_orders_user ON orders(user_id);
 CREATE INDEX IF NOT EXISTS idx_order_items_order ON order_items(order_id);
-CREATE INDEX IF NOT EXISTS idx_inventory_stock ON inventory(current_stock); 
+CREATE INDEX IF NOT EXISTS idx_inventory_stock ON inventory(current_stock);
+CREATE INDEX IF NOT EXISTS idx_inventory_product_id ON inventory(product_id);
+CREATE INDEX IF NOT EXISTS idx_inventory_current_stock ON inventory(current_stock); 

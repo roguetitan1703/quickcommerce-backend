@@ -1,7 +1,9 @@
 package com.example.quickcommerce.controller;
 
 import com.example.quickcommerce.model.Product;
+import com.example.quickcommerce.model.Category;
 import com.example.quickcommerce.repository.ProductRepository;
+import com.example.quickcommerce.repository.CategoryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class DebugController {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @GetMapping("/health")
     public ResponseEntity<Map<String, Object>> healthCheck() {
@@ -67,35 +72,25 @@ public class DebugController {
         return ResponseEntity.ok(headers);
     }
 
-    @GetMapping("/add-test-product")
-    public ResponseEntity<Map<String, Object>> addTestProduct() {
-        logger.info("Add test product endpoint called");
-        Map<String, Object> response = new HashMap<>();
-
+    @PostMapping("/test-product")
+    public ResponseEntity<Product> addTestProduct() {
         try {
             Product product = new Product();
             product.setName("Test Product");
             product.setDescription("Test product added for debugging");
-            product.setCategory("Test");
+            product.setCategoryId(1L); // Default category
             product.setPrice(999.99);
-            product.setCurrentStock(10);
             product.setImageUrl("https://placehold.co/600x400?text=Test+Product");
             product.setCreatedAt(LocalDateTime.now());
-            product.setUpdatedAt(LocalDateTime.now());
+            product.setIsActive(true);
 
             Product savedProduct = productRepository.save(product);
-            response.put("success", true);
-            response.put("message", "Test product added successfully");
-            response.put("productId", savedProduct.getProductId());
-            logger.info("Test product added with ID: {}", savedProduct.getProductId());
+            logger.info("Test product added successfully with ID: {}", savedProduct.getProductId());
+            return ResponseEntity.ok(savedProduct);
         } catch (Exception e) {
             logger.error("Error adding test product", e);
-            response.put("success", false);
-            response.put("error", e.getMessage());
-            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
         }
-
-        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/all-products-raw")
@@ -106,29 +101,22 @@ public class DebugController {
         return ResponseEntity.ok(products);
     }
 
-    @GetMapping("/categories")
-    public ResponseEntity<Map<String, Object>> getCategories() {
-        logger.info("Categories endpoint called");
-        Map<String, Object> response = new HashMap<>();
-
+    @GetMapping("/products/categories")
+    public ResponseEntity<List<String>> getProductCategories() {
         try {
-            // Get all unique categories
             List<String> categories = productRepository.findAll().stream()
-                    .map(Product::getCategory)
+                    .map(product -> {
+                        Category category = categoryRepository.findById(product.getCategoryId())
+                                .orElseThrow(() -> new RuntimeException("Category not found"));
+                        return category.getName();
+                    })
                     .distinct()
                     .collect(Collectors.toList());
-
-            response.put("success", true);
-            response.put("categories", categories);
-            response.put("count", categories.size());
-            logger.info("Retrieved {} categories", categories.size());
+            return ResponseEntity.ok(categories);
         } catch (Exception e) {
             logger.error("Error retrieving categories", e);
-            response.put("success", false);
-            response.put("error", e.getMessage());
+            return ResponseEntity.internalServerError().build();
         }
-
-        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/test-cors")
@@ -175,7 +163,7 @@ public class DebugController {
         // Server configuration
         Map<String, Object> serverConfig = new HashMap<>();
         serverConfig.put("corsConfig",
-                "allowedOrigins=[http://localhost:3000, http://localhost:3001, http://192.168.109.120:3000, http://192.168.109.120:3001], allowCredentials=true");
+                "allowedOrigins=[http://localhost:3000, http://localhost:3001, http://192.168.109.120:3000, http://192.168.109.120:3001, http://10.23.46.217:3001, http://10.23.46.217:3000], allowCredentials=true");
 
         // Add everything to response
         response.put("clientInfo", clientInfo);
@@ -185,5 +173,13 @@ public class DebugController {
 
         logger.info("Returning complete request dump");
         return ResponseEntity.ok(response);
+    }
+
+    @PostMapping("/products")
+    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        product.setCategoryId(1L); // Default category
+        product.setCreatedAt(LocalDateTime.now());
+        product.setIsActive(true);
+        return ResponseEntity.ok(productRepository.save(product));
     }
 }

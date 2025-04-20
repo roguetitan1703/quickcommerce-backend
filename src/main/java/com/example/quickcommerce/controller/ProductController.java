@@ -3,6 +3,7 @@ package com.example.quickcommerce.controller;
 import com.example.quickcommerce.dto.ProductDTO;
 import com.example.quickcommerce.model.Product;
 import com.example.quickcommerce.service.ProductService;
+import com.example.quickcommerce.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CategoryService categoryService;
+
     // GET /api/products - Fetch all products with optional filtering
     @GetMapping
     public ResponseEntity<List<ProductDTO>> getAllProducts(
@@ -28,7 +32,13 @@ public class ProductController {
             @RequestParam(required = false) String search) {
         List<Product> products;
         if (category != null && !category.isEmpty()) {
-            products = productService.getProductsByCategory(category);
+            // Convert category name to ID
+            Long categoryId = categoryService.getCategoryIdByName(category);
+            if (categoryId != null) {
+                products = productService.getProductsByCategory(categoryId);
+            } else {
+                products = List.of(); // Return empty list if category not found
+            }
         } else if (search != null && !search.isEmpty()) {
             products = productService.searchProducts(search);
         } else {
@@ -56,9 +66,9 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
         Product product = productDTO.toEntity();
-        // Set creation and update timestamps
+        // Set creation timestamp
         product.setCreatedAt(LocalDateTime.now());
-        product.setUpdatedAt(LocalDateTime.now());
+        product.setIsActive(true);
 
         Product savedProduct = productService.saveProduct(product);
         return new ResponseEntity<>(new ProductDTO(savedProduct), HttpStatus.CREATED);
@@ -76,8 +86,6 @@ public class ProductController {
 
         Product product = productDTO.toEntity();
         product.setProductId(productId);
-        // Update the update timestamp
-        product.setUpdatedAt(LocalDateTime.now());
 
         Product updatedProduct = productService.saveProduct(product);
         return ResponseEntity.ok(new ProductDTO(updatedProduct));

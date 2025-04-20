@@ -1,6 +1,6 @@
 package com.example.quickcommerce.controller;
 
-import com.example.quickcommerce.model.Product;
+import com.example.quickcommerce.model.Inventory;
 import com.example.quickcommerce.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +18,13 @@ public class InventoryController {
 
     // GET /api/inventory - Get current inventory status (admin only)
     @GetMapping
-    public ResponseEntity<List<Product>> getInventory() {
+    public ResponseEntity<List<Inventory>> getInventory() {
         return ResponseEntity.ok(inventoryService.getCurrentInventory());
     }
 
     // GET /api/inventory/low-stock - Get products with low stock (admin only)
     @GetMapping("/low-stock")
-    public ResponseEntity<List<Product>> getLowStockProducts(
+    public ResponseEntity<List<Inventory>> getLowStockProducts(
             @RequestParam(defaultValue = "10") Integer threshold) {
         return ResponseEntity.ok(inventoryService.getLowStockProducts(threshold));
     }
@@ -38,8 +38,8 @@ public class InventoryController {
         Integer newStock = Integer.valueOf(payload.get("currentStock").toString());
 
         try {
-            Product product = inventoryService.updateProductStock(productId, newStock);
-            return ResponseEntity.ok(product);
+            Inventory inventory = inventoryService.updateProductStock(productId, newStock);
+            return ResponseEntity.ok(inventory);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
         }
